@@ -14,4 +14,11 @@ export class ContaPoupanca extends Conta {
     this.saldo += juros;
     this.transacoes.push(new Transacao(juros, new Date()));
   }
+
+  toJSON() {
+    return {
+      ...super.toJSON(),
+      taxaJuros: this.taxaJuros,
+    };
+  }
 }

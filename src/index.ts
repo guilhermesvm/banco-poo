@@ -19,4 +19,4 @@ contaCorrente.usarChequeEspecial(200);
 
 contaPoupanca.aplicarJuros();
 
-console.log(banco);
+console.log(JSON.stringify(banco, null, 2));

@@ -17,4 +17,11 @@ export class ContaCorrente extends Conta {
       throw new Error("Limite de cheque especial excedido.");
     }
   }
+
+  toJSON() {
+    return {
+      ...super.toJSON(),
+      limiteChequeEspecial: this.limiteChequeEspecial,
+    };
+  }
 }

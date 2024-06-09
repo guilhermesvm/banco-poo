@@ -16,4 +16,11 @@ export class Banco {
   removerCliente(cliente: Cliente): void {
     this.clientes = this.clientes.filter((c) => c !== cliente);
   }
+
+  toJSON() {
+    return {
+      nome: this.nome,
+      clientes: this.clientes,
+    };
+  }
 }

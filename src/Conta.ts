@@ -24,4 +24,12 @@ export abstract class Conta {
       throw new Error("Saldo insuficiente.");
     }
   }
+
+  toJSON() {
+    return {
+      numero: this.numero,
+      saldo: this.saldo,
+      transacoes: this.transacoes,
+    };
+  }
 }

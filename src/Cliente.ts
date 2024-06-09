@@ -18,4 +18,12 @@ export class Cliente {
   removerConta(conta: Conta): void {
     this.contas = this.contas.filter((c) => c !== conta);
   }
+
+  toJSON() {
+    return {
+      nome: this.nome,
+      cpf: this.cpf,
+      contas: this.contas,
+    };
+  }
 }

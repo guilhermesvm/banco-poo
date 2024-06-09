@@ -6,4 +6,11 @@ export class Transacao {
     this.valor = valor;
     this.data = data;
   }
+
+  toJSON() {
+    return {
+      valor: this.valor,
+      data: this.data,
+    };
+  }
 }
