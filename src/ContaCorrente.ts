@@ -1,4 +1,7 @@
-class ContaCorrente extends Conta {
+import { Conta } from "./Conta";
+import { Transacao } from "./Transacao";
+
+export class ContaCorrente extends Conta {
   limiteChequeEspecial: number;
 
   constructor(numero: string, saldo: number, limiteChequeEspecial: number) {

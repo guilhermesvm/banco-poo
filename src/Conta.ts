@@ -1,3 +1,5 @@
+import { Transacao } from "./Transacao";
+
 export abstract class Conta {
   numero: string;
   saldo: number;

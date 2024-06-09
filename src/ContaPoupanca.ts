@@ -1,4 +1,7 @@
-class ContaPoupanca extends Conta {
+import { Conta } from "./Conta";
+import { Transacao } from "./Transacao";
+
+export class ContaPoupanca extends Conta {
   taxaJuros: number;
 
   constructor(numero: string, saldo: number, taxaJuros: number) {

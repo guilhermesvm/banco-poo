@@ -1,3 +1,8 @@
+import { Banco } from "./Banco";
+import { Cliente } from "./Cliente";
+import { ContaCorrente } from "./ContaCorrente";
+import { ContaPoupanca } from "./ContaPoupanca";
+
 // Exemplo de uso
 const banco = new Banco("Banco Exemplo");
 const cliente1 = new Cliente("Fulano", "123.456.789-00");
