@@ -1,4 +1,4 @@
-abstract class Conta {
+export abstract class Conta {
   numero: string;
   saldo: number;
   transacoes: Transacao[];

@@ -1,4 +1,6 @@
-class Cliente {
+import { Conta } from "./Conta";
+
+export class Cliente {
   nome: string;
   cpf: string;
   contas: Conta[];

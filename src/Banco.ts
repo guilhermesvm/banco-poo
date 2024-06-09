@@ -1,4 +1,6 @@
-class Banco {
+import { Cliente } from "./Cliente";
+
+export class Banco {
   nome: string;
   clientes: Cliente[];
 
