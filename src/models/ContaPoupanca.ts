@@ -2,15 +2,15 @@ import { Conta } from "./Conta";
 import { Transacao } from "./Transacao";
 
 export class ContaPoupanca extends Conta {
-  taxaJuros: number;
+  private _taxaJuros: number;
 
   constructor(numero: string, saldo: number, taxaJuros: number) {
     super(numero, saldo);
-    this.taxaJuros = taxaJuros;
+    this._taxaJuros = taxaJuros;
   }
 
   aplicarJuros(): void {
-    const juros = (this.saldo * this.taxaJuros) / 100;
+    const juros = (this.saldo * this._taxaJuros) / 100;
     this.saldo += juros;
     this.transacoes.push(new Transacao(juros, new Date()));
   }
@@ -18,7 +18,7 @@ export class ContaPoupanca extends Conta {
   toJSON() {
     return {
       ...super.toJSON(),
-      taxaJuros: this.taxaJuros,
+      taxaJuros: this._taxaJuros,
     };
   }
 }

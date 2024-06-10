@@ -2,17 +2,17 @@ import { Conta } from "./Conta";
 import { Transacao } from "./Transacao";
 
 export class ContaCorrente extends Conta {
-  limiteChequeEspecial: number;
+  private _limiteChequeEspecial: number;
 
   constructor(numero: string, saldo: number, limiteChequeEspecial: number) {
     super(numero, saldo);
-    this.limiteChequeEspecial = limiteChequeEspecial;
+    this._limiteChequeEspecial = limiteChequeEspecial;
   }
 
   usarChequeEspecial(valor: number): void {
-    if (valor <= this.saldo + this.limiteChequeEspecial) {
-      this.saldo -= valor;
-      this.transacoes.push(new Transacao(-valor, new Date()));
+    if (valor <= this._saldo + this._limiteChequeEspecial) {
+      this._saldo -= valor; 
+      this._transacoes.push(new Transacao(-valor, new Date()));
     } else {
       throw new Error("Limite de cheque especial excedido.");
     }
@@ -21,7 +21,7 @@ export class ContaCorrente extends Conta {
   toJSON() {
     return {
       ...super.toJSON(),
-      limiteChequeEspecial: this.limiteChequeEspecial,
+      limiteChequeEspecial: this._limiteChequeEspecial,
     };
   }
 }

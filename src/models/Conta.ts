@@ -1,27 +1,27 @@
 import { Transacao } from "./Transacao";
 
 export abstract class Conta {
-  id: number;
-  numero: string;
-  saldo: number;
-  transacoes: Transacao[];
+  private _id: number;
+  private _numero: string;
+  private _saldo: number;
+  private _transacoes: Transacao[];
 
   constructor(numero: string, saldo: number) {
-    this.id = Math.floor(Math.random() * 10000000);
-    this.numero = numero;
-    this.saldo = saldo;
-    this.transacoes = [];
+    this._id = Math.floor(Math.random() * 10000000);
+    this._numero = numero;
+    this._saldo = saldo;
+    this._transacoes = [];
   }
 
   depositar(valor: number): void {
-    this.saldo += valor;
-    this.transacoes.push(new Transacao(valor, new Date()));
+    this._saldo += valor;
+    this._transacoes.push(new Transacao(valor, new Date()));
   }
 
   sacar(valor: number): void {
-    if (valor <= this.saldo) {
-      this.saldo -= valor;
-      this.transacoes.push(new Transacao(-valor, new Date()));
+    if (valor <= this._saldo) {
+      this._saldo -= valor;
+      this._transacoes.push(new Transacao(-valor, new Date()));
     } else {
       throw new Error("Saldo insuficiente.");
     }
@@ -29,10 +29,10 @@ export abstract class Conta {
 
   toJSON() {
     return {
-      id: this.id,
-      numero: this.numero,
-      saldo: this.saldo,
-      transacoes: this.transacoes,
+      id: this._id,
+      numero: this._numero,
+      saldo: this._saldo,
+      transacoes: this._transacoes,
     };
   }
 }

@@ -1,29 +1,29 @@
 import { Cliente } from "./Cliente";
 
 export class Banco {
-  id: number;
-  nome: string;
-  clientes: Cliente[];
+  private _id: number;
+  private _nome: string;
+  private _clientes: Cliente[];
 
   constructor(nome: string) {
-    this.id = Math.floor(Math.random() * 10000000);
-    this.nome = nome;
-    this.clientes = [];
+    this._id = Math.floor(Math.random() * 10000000);
+    this._nome = nome;
+    this._clientes = [];
   }
 
   adicionarCliente(cliente: Cliente): void {
-    this.clientes.push(cliente);
+    this._clientes.push(cliente);
   }
 
   removerCliente(cliente: Cliente): void {
-    this.clientes = this.clientes.filter((c) => c !== cliente);
+    this._clientes = this._clientes.filter((c) => c !== cliente);
   }
 
   toJSON() {
     return {
-      id: this.id,
-      nome: this.nome,
-      clientes: this.clientes,
+      id: this._id,
+      nome: this._nome,
+      clientes: this._clientes,
     };
   }
 }
