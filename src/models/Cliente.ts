@@ -23,6 +23,7 @@ export class Cliente {
 
   toJSON() {
     return {
+      id: this.id,
       nome: this.nome,
       cpf: this.cpf,
       contas: this.contas,

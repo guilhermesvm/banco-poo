@@ -29,6 +29,7 @@ export abstract class Conta {
 
   toJSON() {
     return {
+      id: this.id,
       numero: this.numero,
       saldo: this.saldo,
       transacoes: this.transacoes,

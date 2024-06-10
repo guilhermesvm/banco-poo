@@ -11,6 +11,7 @@ export class Transacao {
 
   toJSON() {
     return {
+      id: this.id,
       valor: this.valor,
       data: this.data,
     };

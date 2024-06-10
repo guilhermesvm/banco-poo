@@ -21,6 +21,7 @@ export class Banco {
 
   toJSON() {
     return {
+      id: this.id,
       nome: this.nome,
       clientes: this.clientes,
     };
