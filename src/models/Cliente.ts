@@ -1,11 +1,13 @@
 import { Conta } from "./Conta";
 
 export class Cliente {
+  id: number;
   nome: string;
   cpf: string;
   contas: Conta[];
 
   constructor(nome: string, cpf: string) {
+    this.id = Math.floor(Math.random() * 10000000);
     this.nome = nome;
     this.cpf = cpf;
     this.contas = [];
