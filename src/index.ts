@@ -1,7 +1,7 @@
-import { Banco } from "./Banco";
-import { Cliente } from "./Cliente";
-import { ContaCorrente } from "./ContaCorrente";
-import { ContaPoupanca } from "./ContaPoupanca";
+import { Banco } from "./models/Banco";
+import { Cliente } from "./models/Cliente";
+import { ContaCorrente } from "./models/ContaCorrente";
+import { ContaPoupanca } from "./models/ContaPoupanca";
 
 // Exemplo de uso
 const banco = new Banco("Banco Exemplo");
