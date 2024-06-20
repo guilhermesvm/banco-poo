@@ -9,6 +9,19 @@ export class Transacao {
     this._data = data;
   }
 
+  get getId(): number {
+    return this._id;
+  }
+
+  get getValor(): number {
+    return this._valor;
+  }
+
+  get getData(): Date{
+    return this._data;
+  }
+
+
   toJSON() {
     return {
       id: this._id,
