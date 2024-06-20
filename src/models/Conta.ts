@@ -1,14 +1,12 @@
 import { Transacao } from "./Transacao";
 
 export abstract class Conta {
-  //private _id: number;
   private _numero: string;
   private _agencia: string;
   private _saldo: number;
   private _transacoes: Transacao[];
 
   constructor(numero: string, agencia: string, saldo: number) {
-    //this._id = Math.floor(Math.random() * 10000000);
     this._numero = this._validarNumero(numero) ? numero : "00000-0";
     this._agencia = this._validarAgencia(agencia) ? agencia : "0000-0";
     this._saldo = saldo;

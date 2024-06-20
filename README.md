@@ -28,6 +28,7 @@ Vantagens do TypeScript:
  * [Murilo K. Klein](https://github.com/muriloklein)
 
 ### TO DO:
+* Revisar diagrama
 * Getter e Setter
 * Regras de negocio em metodos
 * Sobrecarga ou substituição
