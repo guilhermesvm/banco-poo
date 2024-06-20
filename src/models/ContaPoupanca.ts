@@ -7,7 +7,7 @@ export class ContaPoupanca extends Conta {
 
   constructor(numero: string, agencia:string, saldo: number, taxaJuros: number) {
     super(numero, agencia, saldo);
-    this._taxaJuros = taxaJuros;
+    this.setTaxaJuros = taxaJuros;
     this._tipo = "Poupança";
   }
 

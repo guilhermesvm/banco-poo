@@ -7,9 +7,9 @@ export abstract class Conta {
   private _transacoes: Transacao[];
 
   constructor(numero: string, agencia: string, saldo: number) {
-    this._numero = this._validarNumero(numero) ? numero : "00000-0";
-    this._agencia = this._validarAgencia(agencia) ? agencia : "0000-0";
-    this._saldo = saldo;
+    this.setNumero = numero;
+    this.setAgencia = agencia;
+    this.setSaldo = saldo;
     this._transacoes = [];
   }
   

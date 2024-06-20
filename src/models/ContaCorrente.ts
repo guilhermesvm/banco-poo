@@ -7,7 +7,7 @@ export class ContaCorrente extends Conta {
 
   constructor(numero: string, agencia: string, saldo: number, limiteChequeEspecial: number) {
     super(numero, agencia,  saldo);
-    this._limiteChequeEspecial = limiteChequeEspecial;
+    this.setLimiteChequeEspecial = limiteChequeEspecial;
     this._tipo = "Corrente";
   }
 

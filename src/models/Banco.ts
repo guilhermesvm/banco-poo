@@ -7,7 +7,7 @@ export class Banco {
 
   constructor(nome: string) {
     this._id = Math.floor(Math.random() * 10000000);
-    this._nome = nome;
+    this.setNome = nome;
     this._clientes = [];
   }
 

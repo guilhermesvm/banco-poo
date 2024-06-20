@@ -8,8 +8,8 @@ export class Cliente {
 
   constructor(nome: string, cpf: string) {
     this._id = Math.floor(Math.random() * 10000000);
-    this._nome = nome;
-    this._cpf = this._validaCPF(cpf) ? cpf : "";
+    this.setNome = nome;
+    this.setCPF = cpf;
     this._contas = [];
   }
 
