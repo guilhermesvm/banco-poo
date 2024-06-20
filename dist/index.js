@@ -1,0 +1,27 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Banco_1 = require("./models/Banco");
+const Cliente_1 = require("./models/Cliente");
+const ContaCorrente_1 = require("./models/ContaCorrente");
+const ContaPoupanca_1 = require("./models/ContaPoupanca");
+// Exemplo de uso
+const banco = new Banco_1.Banco("Banco Exemplo");
+const cliente1 = new Cliente_1.Cliente("Fulano", "123.456.789-00");
+banco.adicionarCliente(cliente1);
+const contaCorrente = new ContaCorrente_1.ContaCorrente("12345-6", "1234-5", 500, 300);
+const contaCorrente2 = new ContaCorrente_1.ContaCorrente("12345-6", "1234-5", 500, 1);
+const contaPoupanca = new ContaPoupanca_1.ContaPoupanca("12345-6", "1234-5", 2000, 0.5);
+cliente1.adicionarConta(contaCorrente);
+cliente1.adicionarConta(contaPoupanca);
+contaCorrente.depositar(200);
+contaCorrente.sacar(150);
+contaCorrente.usarChequeEspecial(200);
+contaPoupanca.consultar();
+const cliente2 = new Cliente_1.Cliente("Ciclano", "989.574.203-23");
+banco.adicionarCliente(cliente2);
+const contaPoupanca2 = new ContaPoupanca_1.ContaPoupanca("98765-1", "7341-5", 500, 0.1);
+cliente2.adicionarConta(contaPoupanca2);
+cliente2.adicionarConta(contaCorrente2);
+contaPoupanca.depositar(100);
+contaPoupanca.sacar(300);
+console.log(JSON.stringify(banco, null, 2));

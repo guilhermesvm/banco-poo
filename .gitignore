@@ -1,2 +1,2 @@
-# Diretório de saída da compilação
-dist/
+# Resultado dos testes
+coverage/
