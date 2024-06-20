@@ -39,8 +39,6 @@ export abstract class Conta {
     this._transacoes.push(transacao);
   }
 
-  protected consultarTransacao(){}
-
   private _validarNumero(numero: string): boolean{
     const regex = /^\d{5}-\d{1}$/;
     if(regex.test(numero)){

@@ -12,17 +12,18 @@ const cliente2 = new Cliente("Ciclano", "987.654.321-00");
 banco.adicionarCliente([cliente1, cliente2]);
 
 const contaCorrente = new ContaCorrente("12345-6", "1234-5", 500, 300);
-const contaPoupanca = new ContaPoupanca("12345-6", "1234-5", 2000, 0.5);
+const contaCorrente2 = new ContaCorrente("12345-6", "1234-5", 500, 1);
+//const contaPoupanca = new ContaPoupanca("67890", 2000, 0.5);
 
 cliente1.adicionarConta(contaCorrente);
-cliente1.adicionarConta(contaPoupanca);
+cliente1.adicionarConta(contaCorrente2);
+//cliente1.adicionarConta(contaPoupanca);
 
 contaCorrente.depositar(200);
 contaCorrente.sacar(150);
 contaCorrente.usarChequeEspecial(200);
 
-contaPoupanca.aplicarJuros();
-contaPoupanca.consultar();
+//contaPoupanca.aplicarJuros();
 
 console.log(JSON.stringify(banco, null, 2));
 
