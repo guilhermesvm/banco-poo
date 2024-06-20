@@ -17,10 +17,15 @@ export class Transacao {
     return this._valor;
   }
 
+  set setValor(valor: number) {
+    if(valor >= 0){
+      this._valor = valor;
+    }
+  }
+
   get getData(): Date{
     return this._data;
   }
-
 
   toJSON() {
     return {
