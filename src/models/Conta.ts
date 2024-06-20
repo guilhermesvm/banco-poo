@@ -17,14 +17,26 @@ export abstract class Conta {
     return this.getSaldo;
   }
 
-  set setSaldo(valor: number){
-        if(valor >= 0){
-          this._saldo = valor;
-        }
+  depositar(valor: number): void {
+    if(valor >= 0){
+      this._saldo += valor;
+      this._transacoes.push(new Transacao(valor, new Date())); 
+    } else{
+      throw new Error("Insira um valor válido.");
+    }
   }
 
-  get getSaldo(): number{
-    return this._saldo;     
+  sacar(valor: number): void {
+    if (valor <= this._saldo && valor > 0){
+      this._saldo -= valor;
+      this._transacoes.push(new Transacao(-valor, new Date()));
+    } else {
+      throw new Error("Saldo insuficiente.");
+    }
+  }
+
+  protected adicionarTransacao(transacao: Transacao): void{
+    this._transacoes.push(transacao);
   }
 
   private _validarNumero(numero: string): boolean{
@@ -43,22 +55,14 @@ export abstract class Conta {
     return false;
   }
 
-  depositar(valor: number): void {
+  set setSaldo(valor: number){
     if(valor >= 0){
-      this._saldo += valor;
-      this._transacoes.push(new Transacao(valor, new Date())); 
-    } else{
-      throw new Error("Insira um valor válido.");
+      this._saldo = valor;
     }
   }
 
-  sacar(valor: number): void {
-    if (valor <= this._saldo && valor > 0){
-      this._saldo -= valor;
-      this._transacoes.push(new Transacao(-valor, new Date()));
-    } else {
-      throw new Error("Saldo insuficiente.");
-    }
+  get getSaldo(): number{
+    return this._saldo;     
   }
 
   toJSON() {

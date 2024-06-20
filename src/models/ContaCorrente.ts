@@ -9,11 +9,15 @@ export class ContaCorrente extends Conta {
     this._limiteChequeEspecial = limiteChequeEspecial;
   }
 
+
   usarChequeEspecial(valor: number): void {
-    if (valor <= this._saldo + this._limiteChequeEspecial) {
-      this._saldo -= valor; 
-      this._transacoes.push(new Transacao(-valor, new Date()));
-    } else {
+    const saldoAtual: number = this.consultar();
+
+    if (valor <= saldoAtual  + this._limiteChequeEspecial) {
+      this.setSaldo = saldoAtual - valor;
+      this.adicionarTransacao(new Transacao(-valor, new Date()));
+    } 
+    else {
       throw new Error("Limite de cheque especial excedido.");
     }
   }
