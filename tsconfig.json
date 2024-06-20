@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES6", // Define a versão do ECMAScript alvo
+    "target": "es2016", // Define a versão do ECMAScript alvo
+    "lib": ["es2016", "dom"],
     "module": "commonjs", // Define o sistema de módulo
     "strict": true, // Habilita todas as verificações estritas
     "esModuleInterop": true, // Habilita compatibilidade com módulos ES6

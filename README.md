@@ -5,9 +5,6 @@ O software a ser desenvolvido é um sistema bancário básico que permitirá a g
 
 O objetivo principal é fornecer funcionalidades para adicionar e remover clientes, gerenciar contas associadas a esses clientes, registrar transações e aplicar operações específicas como cheque especial e juros em contas poupança.
 
-
-
-
 ## 📋 Descrição da linguagem escolhida
 TypeScript é um superconjunto de JavaScript que adiciona tipagem estática e outros recursos avançados. Ele é desenvolvido e mantido pela Microsoft e é amplamente utilizado para o desenvolvimento deaplicações web, pois permite a detecção de erros em tempo de compilação, tornando o código mais robusto e fácil de manter.
 
@@ -23,13 +20,20 @@ Vantagens do TypeScript:
     <img src="./public/diagrama-classes.png" alt="Diagrama de classes" width=100%  > 
 </div>
 
+## Instalação
+1. Clonar o repositório:
+
+`````
+git clone https://github.com/guilhermesvm/banco-poo.git
+`````
+
+2. Abra o projeto com VSCode ou outra IDE de desenvolvimento;
+3. Em um terminal bash, digite os seguintes comandos:
+
+* `````npm run build`````
+
+* `````npm run dev`````
+
 ## 👥 Autores
  * [Guilherme S. Machado](https://github.com/guilhermesvm)
  * [Murilo K. Klein](https://github.com/muriloklein)
-
-### TO DO:
-* Revisar diagrama
-* Getter e Setter
-* Regras de negocio em metodos
-* Sobrecarga ou substituição
-* console, front-end, ou frameworks de testes unitários, desde que manipule os objetos em memória.
