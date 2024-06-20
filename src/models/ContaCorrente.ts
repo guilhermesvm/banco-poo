@@ -3,6 +3,7 @@ import { Transacao } from "./Transacao";
 
 export class ContaCorrente extends Conta {
   private _limiteChequeEspecial: number;
+  private _tipo: string;
 
   constructor(
     numero: string,
@@ -26,6 +27,10 @@ export class ContaCorrente extends Conta {
     }
   }
 
+  get getTipo(): string {
+    return this._tipo;
+  }
+
   get getLimiteChequeEspecial(): number {
     return this._limiteChequeEspecial;
   }
@@ -40,14 +45,11 @@ export class ContaCorrente extends Conta {
     }
   }
 
-  get getTipo(): string {
-    return this._tipo;
-  }
-
   toJSON() {
     return {
-      ...super.toJSON(),
+      tipo: this._tipo,
       limiteChequeEspecial: this._limiteChequeEspecial,
+      ...super.toJSON(),
     };
   }
 }

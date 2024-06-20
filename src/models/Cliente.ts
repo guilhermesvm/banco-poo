@@ -14,25 +14,36 @@ export class Cliente {
   }
 
   consultarContas(): Conta[] {
-    if(this._contas.length === 0){
+    if (this._contas.length === 0) {
       throw new Error("Não há contas cadastradas para esse usuário.");
     }
     return this._contas;
   }
 
-  adicionarConta(conta: Conta): void {
-    if(!conta){
-      throw new Error("A conta inserida é inválida.");
+  // Assinaturas de sobrecarga
+  adicionarConta(conta: Conta): void;
+  adicionarConta(contas: Conta[]): void;
+
+  // Implementação do método
+  adicionarConta(contaOuContas: Conta | Conta[]): void {
+    if (Array.isArray(contaOuContas)) {
+      this._contas.push(...contaOuContas);
+    } else {
+      this._contas.push(contaOuContas);
     }
-    this._contas.push(conta);
   }
 
-  removerConta(conta: Conta): void {
-    const index = this._contas.indexOf(conta);
-    if(index === -1){
-      throw new Error("A conta não foi encontrada.");
+  // Assinaturas de sobrecarga
+  removerConta(conta: Conta): void;
+  removerConta(contas: Conta[]): void;
+
+  // Implementação do método
+  removerConta(contaOuContas: Conta | Conta[]): void {
+    if (Array.isArray(contaOuContas)) {
+      this._contas = this._contas.filter((c) => !contaOuContas.includes(c));
+    } else {
+      this._contas = this._contas.filter((c) => c !== contaOuContas);
     }
-    this._contas.splice(index, 1);
   }
 
   get getId(): number {
@@ -44,7 +55,7 @@ export class Cliente {
   }
 
   set setNome(nome: string) {
-    if(this._validaNome(nome)){
+    if (this._validaNome(nome)) {
       this._nome = nome;
     } else {
       throw new Error("Por favor, insira um nome válido.");
@@ -52,13 +63,13 @@ export class Cliente {
   }
 
   get getCPF(): string {
-    return this._cpf
+    return this._cpf;
   }
 
   set setCPF(cpf: string) {
-    if(this._validaCPF(cpf)){
+    if (this._validaCPF(cpf)) {
       this._cpf = cpf;
-    } else{
+    } else {
       throw new Error("Por favor, insira um número de CPF válido.");
     }
   }
@@ -69,7 +80,7 @@ export class Cliente {
   }
 
   private _validaNome(nome: string): boolean {
-    if(!nome || nome.trim() === ""){
+    if (!nome || nome.trim() === "") {
       return false;
     }
     return true;

@@ -11,15 +11,15 @@ export class Banco {
     this._clientes = [];
   }
 
-  consultarClientes() : Cliente[] {
-    if(this._clientes.length === 0){
+  consultarClientes(): Cliente[] {
+    if (this._clientes.length === 0) {
       throw new Error("Não há clientes cadastrados.");
     }
     return this._clientes;
   }
 
   adicionarCliente(cliente: Cliente): void {
-    if(!cliente){
+    if (!cliente) {
       throw new Error("O cliente inserido é inválido.");
     }
     this._clientes.push(cliente);
@@ -27,8 +27,8 @@ export class Banco {
 
   removerCliente(cliente: Cliente): void {
     const index = this._clientes.indexOf(cliente);
-    
-    if(index === -1){
+
+    if (index === -1) {
       throw new Error("O cliente não foi encontrado.");
     }
     this._clientes.splice(index, 1);
@@ -43,7 +43,7 @@ export class Banco {
   }
 
   set setNome(nome: string) {
-    if(this._validaNome(nome)){
+    if (this._validaNome(nome)) {
       this._nome = nome;
     } else {
       throw new Error("Por favor, insira um nome válido.");
@@ -51,13 +51,13 @@ export class Banco {
   }
 
   private _validaNome(nome: string): boolean {
-    if(!nome || nome.trim() === ""){
+    if (!nome || nome.trim() === "") {
       return false;
     }
     return true;
   }
 
-  private _quantidadeClientes() : number {
+  private _quantidadeClientes(): number {
     return this._clientes.length;
   }
 
