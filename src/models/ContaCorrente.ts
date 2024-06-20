@@ -11,7 +11,6 @@ export class ContaCorrente extends Conta {
     this._tipo = "Corrente";
   }
 
-
   usarChequeEspecial(valor: number): void {
     const saldoAtual: number = this.consultar();
 
@@ -22,6 +21,22 @@ export class ContaCorrente extends Conta {
     else {
       throw new Error("Limite de cheque especial excedido.");
     }
+  }
+
+  get getLimiteChequeEspecial(): number {
+    return this._limiteChequeEspecial;
+  }
+
+  set setLimiteChequeEspecial(limite: number){
+    if(limite >= 0){
+      this._limiteChequeEspecial = limite;
+    } else{
+      throw new Error("O limite do cheque especial deve ser um valor não negativo.");
+    }
+  }
+
+  get getTipo(): string {
+    return this._tipo;
   }
 
   toJSON() {

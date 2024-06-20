@@ -23,3 +23,20 @@ contaPoupanca.aplicarJuros();
 contaPoupanca.consultar();
 
 console.log(JSON.stringify(banco, null, 2));
+
+//Teste Banco
+console.log(banco.consultarClientes());
+banco.removerCliente(cliente1);
+
+banco.setNome = "";
+console.log(banco.getNome);
+
+// //Teste Cliente
+// console.log(cliente1.consultarContas());
+// cliente1.removerConta(contaCorrente);
+// console.log(cliente1.consultarContas());
+// console.log(cliente1.getId);
+// console.log(cliente1.getCPF);
+// console.log(cliente1.getNome);
+// cliente1.setNome = "Joaquim"
+// console.log(cliente1.getNome);
