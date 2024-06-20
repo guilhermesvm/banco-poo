@@ -9,13 +9,13 @@ export class ContaPoupanca extends Conta {
     this._taxaJuros = taxaJuros;
   }
 
-  // aplicarJuros(): void {
-  //   const saldoAtual = this.consultar();
-  //   const juros = (saldoAtual * this._taxaJuros) / 100;
+  aplicarJuros(): void {
+    const saldoAtual: number = this.consultar();
+    const juros = (saldoAtual * this._taxaJuros) / 100;
     
-  //   this.setSaldo = saldoAtual += juros;
-  //   this.transacoes.push(new Transacao(juros, new Date()));
-  // }
+    this.setSaldo = saldoAtual + juros;
+    this.adicionarTransacao(new Transacao(juros, new Date()));
+  }
 
   toJSON() {
     return {
