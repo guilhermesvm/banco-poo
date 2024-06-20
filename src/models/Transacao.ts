@@ -9,6 +9,24 @@ export class Transacao {
     this._data = data;
   }
 
+  get getId(): number {
+    return this._id;
+  }
+
+  get getValor(): number {
+    return this._valor;
+  }
+
+  set setValor(valor: number) {
+    if(valor >= 0){
+      this._valor = valor;
+    }
+  }
+
+  get getData(): Date{
+    return this._data;
+  }
+
   toJSON() {
     return {
       id: this._id,

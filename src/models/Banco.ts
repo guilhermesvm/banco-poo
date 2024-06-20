@@ -7,40 +7,65 @@ export class Banco {
 
   constructor(nome: string) {
     this._id = Math.floor(Math.random() * 10000000);
-    this._nome = nome;
+    this.setNome = nome;
     this._clientes = [];
   }
 
-  // Assinaturas de sobrecarga
-  adicionarCliente(cliente: Cliente): void;
-  adicionarCliente(clientes: Cliente[]): void;
+  consultarClientes() : Cliente[] {
+    if(this._clientes.length === 0){
+      throw new Error("Não há clientes cadastrados.");
+    }
+    return this._clientes;
+  }
 
-  // Implementação do método
-  adicionarCliente(clienteOuClientes: Cliente | Cliente[]): void {
-    if (Array.isArray(clienteOuClientes)) {
-      this._clientes.push(...clienteOuClientes);
+  adicionarCliente(cliente: Cliente): void {
+    if(!cliente){
+      throw new Error("O cliente inserido é inválido.");
+    }
+    this._clientes.push(cliente);
+  }
+
+  removerCliente(cliente: Cliente): void {
+    const index = this._clientes.indexOf(cliente);
+    
+    if(index === -1){
+      throw new Error("O cliente não foi encontrado.");
+    }
+    this._clientes.splice(index, 1);
+  }
+
+  get getId(): number {
+    return this._id;
+  }
+
+  get getNome(): string {
+    return this._nome;
+  }
+
+  set setNome(nome: string) {
+    if(this._validaNome(nome)){
+      this._nome = nome;
     } else {
-      this._clientes.push(clienteOuClientes);
+      throw new Error("Por favor, insira um nome válido.");
     }
   }
 
-  removerCliente(cliente: Cliente): void;
-  removerCliente(clientes: Cliente[]): void;
-
-  removerCliente(clienteOuClientes: Cliente | Cliente[]): void {
-    if (Array.isArray(clienteOuClientes)) {
-      this._clientes = this._clientes.filter(
-        (c) => !clienteOuClientes.includes(c)
-      );
-    } else {
-      this._clientes = this._clientes.filter((c) => c !== clienteOuClientes);
+  private _validaNome(nome: string): boolean {
+    if(!nome || nome.trim() === ""){
+      return false;
     }
+    return true;
+  }
+
+  private _quantidadeClientes() : number {
+    return this._clientes.length;
   }
 
   toJSON() {
     return {
       id: this._id,
       nome: this._nome,
+      quantidade_clientes: this._quantidadeClientes(),
       clientes: this._clientes,
     };
   }

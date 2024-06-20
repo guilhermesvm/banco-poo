@@ -7,27 +7,27 @@ export abstract class Conta {
   private _transacoes: Transacao[];
 
   constructor(numero: string, agencia: string, saldo: number) {
-    this._numero = this._validarNumero(numero) ? numero : "00000-0";
-    this._agencia = this._validarAgencia(agencia) ? agencia : "0000-0";
-    this._saldo = saldo;
+    this.setNumero = numero;
+    this.setAgencia = agencia;
+    this.setSaldo = saldo;
     this._transacoes = [];
   }
-  
+
   consultar(): number {
     return this.getSaldo;
   }
 
   depositar(valor: number): void {
-    if(valor >= 0){
+    if (valor >= 0) {
       this._saldo += valor;
-      this._transacoes.push(new Transacao(valor, new Date())); 
-    } else{
-      throw new Error("Insira um valor válido.");
+      this._transacoes.push(new Transacao(valor, new Date()));
+    } else {
+      throw new Error("Insira um valor válido para depósito.");
     }
   }
 
   sacar(valor: number): void {
-    if (valor <= this._saldo && valor > 0){
+    if (valor <= this._saldo && valor > 0) {
       this._saldo -= valor;
       this._transacoes.push(new Transacao(-valor, new Date()));
     } else {
@@ -35,34 +35,70 @@ export abstract class Conta {
     }
   }
 
-  protected adicionarTransacao(transacao: Transacao): void{
+  consultarTransacoes(): Transacao[] {
+    if (this._transacoes.length === 0) {
+      throw new Error("Não há transações cadastradas para essa conta.");
+    }
+    return this._transacoes;
+  }
+
+  adicionarTransacao(transacao: Transacao): void {
+    if (!transacao) {
+      throw new Error("A transação inserida é inválida.");
+    }
     this._transacoes.push(transacao);
   }
 
-  private _validarNumero(numero: string): boolean{
-    const regex = /^\d{5}-\d{1}$/;
-    if(regex.test(numero)){
-      return true;
+  removerTransacao(transacao: Transacao): void {
+    const index = this._transacoes.indexOf(transacao);
+    if (index === -1) {
+      throw new Error("A transação não foi encontrada.");
     }
-    return false;
+    this._transacoes.splice(index, 1);
   }
 
-  private _validarAgencia(agencia: string): boolean{
-    const regex = /^\d{4}-\d{1}$/;
-    if(regex.test(agencia)){
-      return true;
-    }
-    return false;
+  get getNumero(): string {
+    return this._numero;
   }
 
-  set setSaldo(valor: number){
-    if(valor >= 0){
+  set setNumero(numero: string) {
+    if (this._validarNumero(numero)) {
+      this._numero = numero;
+    } else {
+      throw new Error("Por favor, insira um número de conta válido.");
+    }
+  }
+
+  get getAgencia(): string {
+    return this._agencia;
+  }
+
+  set setAgencia(agencia: string) {
+    if (this._validarAgencia(agencia)) {
+      this._agencia = agencia;
+    } else {
+      throw new Error("Por favor, insira um número de agência válido.");
+    }
+  }
+
+  get getSaldo(): number {
+    return this._saldo;
+  }
+
+  set setSaldo(valor: number) {
+    if (valor >= 0) {
       this._saldo = valor;
     }
   }
 
-  get getSaldo(): number{
-    return this._saldo;     
+  private _validarNumero(numero: string): boolean {
+    const regex = /^\d{5}-\d{1}$/;
+    return regex.test(numero);
+  }
+
+  private _validarAgencia(agencia: string): boolean {
+    const regex = /^\d{4}-\d{1}$/;
+    return regex.test(agencia);
   }
 
   toJSON() {
@@ -70,6 +106,7 @@ export abstract class Conta {
       numero: this._numero,
       agencia: this._agencia,
       saldo: this._saldo,
+      quantidadeTransacoes: this._transacoes.length,
       transacoes: this._transacoes,
     };
   }
