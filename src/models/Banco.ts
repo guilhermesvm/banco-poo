@@ -11,12 +11,30 @@ export class Banco {
     this._clientes = [];
   }
 
-  adicionarCliente(cliente: Cliente): void {
-    this._clientes.push(cliente);
+  // Assinaturas de sobrecarga
+  adicionarCliente(cliente: Cliente): void;
+  adicionarCliente(clientes: Cliente[]): void;
+
+  // Implementação do método
+  adicionarCliente(clienteOuClientes: Cliente | Cliente[]): void {
+    if (Array.isArray(clienteOuClientes)) {
+      this._clientes.push(...clienteOuClientes);
+    } else {
+      this._clientes.push(clienteOuClientes);
+    }
   }
 
-  removerCliente(cliente: Cliente): void {
-    this._clientes = this._clientes.filter((c) => c !== cliente);
+  removerCliente(cliente: Cliente): void;
+  removerCliente(clientes: Cliente[]): void;
+
+  removerCliente(clienteOuClientes: Cliente | Cliente[]): void {
+    if (Array.isArray(clienteOuClientes)) {
+      this._clientes = this._clientes.filter(
+        (c) => !clienteOuClientes.includes(c)
+      );
+    } else {
+      this._clientes = this._clientes.filter((c) => c !== clienteOuClientes);
+    }
   }
 
   toJSON() {
