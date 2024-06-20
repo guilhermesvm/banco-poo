@@ -57,10 +57,15 @@ export class Banco {
     return true;
   }
 
+  private _quantidadeClientes() : number {
+    return this._clientes.length;
+  }
+
   toJSON() {
     return {
       id: this._id,
       nome: this._nome,
+      quantidade_clientes: this._quantidadeClientes(),
       clientes: this._clientes,
     };
   }

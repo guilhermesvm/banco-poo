@@ -108,6 +108,7 @@ export abstract class Conta {
       numero: this._numero,
       agencia: this._agencia,
       saldo: this._saldo,
+      quantidadeTransacoes: this._transacoes.length,
       transacoes: this._transacoes,
     };
   }

@@ -80,6 +80,7 @@ export class Cliente {
       id: this._id,
       nome: this._nome,
       cpf: this._cpf,
+      quantidadeContas: this._contas.length,
       contas: this._contas,
     };
   }

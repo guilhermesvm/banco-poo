@@ -37,8 +37,9 @@ export class ContaPoupanca extends Conta {
 
   toJSON() {
     return {
-      ...super.toJSON(),
+      tipo: this._tipo,
       taxaJuros: this._taxaJuros,
+      ...super.toJSON()
     };
   }
 }
