@@ -33,10 +33,5 @@ describe("Testa as funcionalidades de um Banco", () => {
         const banco = new Banco("Banco Exemplo");
         const cliente = new Cliente("Fulano", "123.456.789-00");
         expect(() => banco.removerCliente(cliente)).toThrow("O cliente não foi encontrado.");
-      });
-    
-        
-    
-
-    
+      });  
 })
