@@ -35,9 +35,9 @@ git clone https://github.com/guilhermesvm/banco-poo.git
 * `````npm run dev`````
 
 4. Instalando o Jest (framework para testes unitários):
-* `````npm i -D jest @types/jest ts-jest````` para instalar o Jest
-* ``````npx ts-jest config:init````` para inicializar o Jest
-* ir em package Json e dentro de "scripts" adicionar: ``````"test": "jest --watchAll --coverage"``````
+* Instalar o Jest: `````npm i -D jest @types/jest ts-jest`````
+* Inicializar o Jest`````npx ts-jest config:init````` para inicializar o Jest
+* Em "package-json", dentro de "scripts" adicionar: ``````"test": "jest --watchAll --coverage"``````
 
 ## 👥 Autores
  * [Guilherme S. Machado](https://github.com/guilhermesvm)

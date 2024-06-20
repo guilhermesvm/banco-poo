@@ -15,6 +15,7 @@ describe("Testa as funcionalidades de uma Conta Poupança", () => {
 
   test("Deve aplicar os juros corretamente na conta poupança", () => {
     const contaPoupanca = new ContaPoupanca(numero, agencia, saldo, taxaJuros);
+    contaPoupanca.aplicarJuros();
     expect(contaPoupanca.getSaldo).toBe(saldo + (saldo * taxaJuros) / 100);
   });
 
